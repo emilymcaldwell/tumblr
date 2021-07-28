@@ -71,7 +71,7 @@
 
 <!-- SCRIPTS -->
 
-<link href="https://fonts.googleapis.com/css?family={text:Google Font}:300,400,500,600,700|Karla:500" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family={text:Google Font}:300,400,500,600,700|Karla:500|Playfair+Display" rel="stylesheet">
 <link href="https://static.tumblr.com/0podkko/oDSpg7y88/photosets.css" rel="stylesheet">
 <link href='https://static.tumblr.com/m2fiocp/1fbqq9vgi/outicons.css' rel='stylesheet' type='text/css'>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/smoothscroll/1.4.10/SmoothScroll.min.js"></script>
@@ -447,17 +447,48 @@ nav .drop_link {
     background:{color:posts};
     border:1px solid {color:borders};
     border-radius:{select:Border Radius};
+    text-align:center;
     padding:20px;
 }
 
 .quote {
-    font-size:calc({text:font size} + 2px);
-    font-weight:bold;
+    font-size:calc({text:font size} + 5px);
+    font-weight:600;
+    line-height:100%;
+}
+
+.quote:before {
+    content:'\201C';
+    color:{color:accent};
+    font-family:'Playfair Display', serif;
+    font-size:30px;
+    font-weight:normal;
+    line-height:100%;
+    vertical-align:sub;
+    margin-right:5px;
+}
+
+.quote:after {
+    content:'\201D';
+    color:{color:accent};
+    font-family:'Playfair Display', serif;
+    font-size:30px;
+    font-weight:normal;
+    line-height:100%;
+    vertical-align:sub;
+    margin-left:5px;
+}
+
+.quote_container hr {
+    border:none;
+    box-shadow:0;
+    margin:20px auto 25px;
+    width:75px;
+    border-top:2px solid {color:borders};
 }
 
 .quote_source {
-    text-align:right;
-    margin-top:10px;
+    font-style:italic;
 }
 
 /* LINK */
@@ -786,8 +817,8 @@ footer .oi {
 
 {block:Quote}
 <div class="quote_container">
-<div class="quote">&ldquo;{Quote}&rdquo;</div>
-{block:Source}<div class="quote_source">&horbar; {Source}</div>{/block:Source}
+<div class="quote">{Quote}</div>
+{block:Source}<div class="quote_source"><hr>{Source}</div>{/block:Source}
 </div>
 {/block:Quote}
 
