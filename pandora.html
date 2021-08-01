@@ -4,16 +4,17 @@
 <!------------------------------------------------
  
     PANDORA BY 92PCY.TUMBLR.COM
-    LASTED UPDATED 21.07.25
+    LASTED UPDATED 21.07.31 v1.01
  
     CREDITS:
     
-    - outicons by antony saputro
+    - feathericons by cole bemis
     - scroll to top by paul underwood
     - style my tooltips by malihu
     - no.js photosets by annasthms & eggdesign
     - smoothscroll by balazs galambosi
     - responsive iframes by nouvae
+    - npfPhotosets by codematurgy
  
 -------------------------------------------------->
 
@@ -51,7 +52,7 @@
 <meta name="text:Home Link" content="home" />
 <meta name="text:Ask Icon" content="mail" />
 <meta name="text:Ask Link" content="ask" />
-<meta name="text:Archive Icon" content="time" />
+<meta name="text:Archive Icon" content="clock" />
 <meta name="text:Archive Link" content="archive" />
 <meta name="text:Navigation Icon" content="menu" />
 <meta name="text:Navigation Link" content="show links" />
@@ -74,6 +75,7 @@
 <link href="https://fonts.googleapis.com/css?family={text:Google Font}:300,400,500,600,700|Karla:500|Playfair+Display" rel="stylesheet">
 <link href="https://static.tumblr.com/0podkko/oDSpg7y88/photosets.css" rel="stylesheet">
 <link href='https://static.tumblr.com/m2fiocp/1fbqq9vgi/outicons.css' rel='stylesheet' type='text/css'>
+<link href="https://cdn.jsdelivr.net/gh/emilymcaldwell/feathericons/style.css" rel='stylesheet' type='text/css'>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/smoothscroll/1.4.10/SmoothScroll.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script src="https://static.tumblr.com/iuw14ew/VSQma1786/jquery.style-my-tooltips.js"></script>
@@ -299,11 +301,12 @@ nav {
 }
 
 nav a {
-    margin:0 3px;
+    margin:0 5px;
 }
 
-nav .oi {
-    font-size:20px;
+nav .feather {
+    display:inline;
+    font-size:18px;
 }
 
 nav .drop_link {
@@ -509,7 +512,7 @@ nav .drop_link {
     padding:5px 10px;
 }
 
-.link .oi {
+.link .feather {
     font-size:20px;
     margin:0 10px;
 }
@@ -610,9 +613,9 @@ nav .drop_link {
     margin:20px 0 0;
 }
 
-.post_info .oi {
-    font-size:20px;
-    margin:0 1px;
+.post_info .feather {
+    font-size:18px;
+    margin:0 3px;
 }
 
 .date {
@@ -672,34 +675,38 @@ footer {
     line-height:100%;
 }
 
-footer .oi {
-    font-size:25px;
+footer .feather {
+    font-size:20px;
     margin:0 5px;
 }
 
 /* CREDIT */
 
+.feather {
+    line-height:100%;
+}
+
 .credit {
     position:fixed;
     bottom:15px;
     right:15px;
-    line-height:100%;
+    line-height:0%;
     background:{color:background};
     border-radius:5px;
-    padding:4px 4.5px;
-    font-size:26px;
+    padding:6px;
+    font-size:20px;
 }
 
 .top {
     display:none;
     position:fixed;
-    bottom:55px;
+    bottom:53px;
     right:15px;
-    line-height:100%;
+    line-height:0%;
     background:{color:background};
     border-radius:5px;
-    padding:4px 4.5px;
-    font-size:26px;
+    padding:6px;
+    font-size:20px;
 }
 
 @media only screen and (max-width: 720px) {
@@ -736,10 +743,10 @@ footer .oi {
     <div class="description">{text:Description}</div>
     {/block:ifDescription}
     <nav class="drop_parent">
-    {block:ifHomeLink}<span><a href="/" title="{text:Home Link}"><i class="oi oi-{text:Home Icon}"></i></a></span>{/block:ifHomeLink}
-    {block:ifAskLink}<span><a href="/ask" title="{text:Ask Link}"><i class="oi oi-{text:Ask Icon}"></i></a></span>{/block:ifAskLink}
-    {block:ifArchiveLink}<span><a href="/archive" title="{text:Archive Link}"><i class="oi oi-{text:Archive Icon}"></i></a></span>{/block:ifArchiveLink}
-    {block:ifLink1}<span><a class="drop_header" onclick="dropHeader_onclick(this);" title="{text:navigation link}"><i class="oi oi-{text:navigation icon}"></i></a></span>
+    {block:ifHomeLink}<span><a href="/" title="{text:Home Link}"><i class="feather feather-{text:Home Icon}"></i></a></span>{/block:ifHomeLink}
+    {block:ifAskLink}<span><a href="/ask" title="{text:Ask Link}"><i class="feather feather-{text:Ask Icon}"></i></a></span>{/block:ifAskLink}
+    {block:ifArchiveLink}<span><a href="/archive" title="{text:Archive Link}"><i class="feather feather-{text:Archive Icon}"></i></a></span>{/block:ifArchiveLink}
+    {block:ifLink1}<span><a class="drop_header" onclick="dropHeader_onclick(this);" title="{text:navigation link}"><i class="feather feather-{text:navigation icon}"></i></a></span>
             <div class="drop_link">
                 <span><a href="{text:Link 1 URL}">{text:Link 1}</a></span>{/block:ifLink1}
                 {block:ifLink2}<span><a href="{text:Link 2 URL}">{text:Link 2}</a></span>{/block:ifLink2}
@@ -824,7 +831,7 @@ footer .oi {
 
 {block:Link}
 <div class="link_container">
-<div class="link"><a href="{URL}" class="path{block:Description} has-desc{/block:Description}" {Target}><span>{Name} {block:Excerpt}<div class="excerpt">{Excerpt}</div>{/block:Excerpt}</span><i class="oi oi-chevron-right"></i></a></div>
+<div class="link"><a href="{URL}" class="path{block:Description} has-desc{/block:Description}" {Target}><span>{Name} {block:Excerpt}<div class="excerpt">{Excerpt}</div>{/block:Excerpt}</span><i class="feather feather-chevron-right"></i></a></div>
 {block:Description}
 <div class="link-description">
 {block:NotReblog}{Description}{/block:NotReblog}
@@ -927,14 +934,14 @@ footer .oi {
 {block:Date}
 <div class="post_info drop_parent">
     {block:PinnedPostLabel}
-    <div class="date"><a href="{Permalink}" title="pinned post"><i class="oi oi-location"></i></a></div>
+    <div class="date"><a href="{Permalink}" title="pinned post"><i class="feather feather-map-pin"></i></a></div>
     {/block:PinnedPostLabel}
-    <div class="date"><a href="{Permalink}" title="{TimeAgo}"><i class="oi oi-time"></i></a></div>
-    <div class="date"><a class="likeb" href="#" title="like">{LikeButton}<span class="actual-button"><i class="oi oi-heart"></i></span></a></div>
-    <div class="date"><a href="{ReblogURL}" title="reblog"><i class="oi oi-refresh"></i></a></div>
+    <div class="date"><a href="{Permalink}" title="{TimeAgo}"><i class="feather feather-clock"></i></a></div>
+    <div class="date"><a class="likeb" href="#" title="like">{LikeButton}<span class="actual-button"><i class="feather feather-heart"></i></span></a></div>
+    <div class="date"><a href="{ReblogURL}" title="reblog"><i class="feather feather-repeat"></i></a></div>
     {block:hastags}
     <div class="date">
-        <span><a class="drop_header" onclick="dropHeader_onclick(this);" title="view tags"><i class="oi oi-tags"></i></a></span>
+        <span><a class="drop_header" onclick="dropHeader_onclick(this);" title="view tags"><i class="feather feather-tag"></i></a></span>
     </div>
         <div class="drop_link tags">{block:Tags}<a href="{TagUrl}">#{Tag}</a>{/block:Tags}</div>
     {/block:hasTags}
@@ -962,11 +969,11 @@ footer .oi {
 {block:Pagination}
 <footer>
 {block:PreviousPage}
-    <span><a href="{PreviousPage}"><i class="oi oi-chevron-left"></i></a></span>
+    <span><a href="{PreviousPage}"><i class="feather feather-arrow-left"></i></a></span>
 {/block:PreviousPage}
     <span>{CurrentPage} of {TotalPages}</span>
 {block:NextPage}
-    <span><a href="{NextPage}"><i class="oi oi-chevron-right"></i></a></span>
+    <span><a href="{NextPage}"><i class="feather feather-arrow-right"></i></a></span>
 {/block:NextPage}
 </footer>
 {/block:Pagination}
@@ -1078,9 +1085,9 @@ npfPhotosets(".posts", {
 });
 </script>
 
-<a href="#" title="back to top" class="top"><i class="oi oi-chevron-down"></i></a>
+<a href="#" title="back to top" class="top"><i class="feather feather-arrow-up"></i></a>
 
-<div class="credit"><a href="https://92pcy.tumblr.com/" title="92pcy"><i class="oi oi-smile"></i></a></div>
+<div class="credit"><a href="https://92pcy.tumblr.com/" title="92pcy"><i class="feather feather-smile"></i></a></div>
 
 </body>
 </html>
