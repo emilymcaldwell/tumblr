@@ -4,7 +4,7 @@
 <!------------------------------------------------
  
     PANDORA BY 92PCY.TUMBLR.COM
-    LASTED UPDATED 21.07.31 v1.01
+    LASTED UPDATED 21.08.22 v1.02
  
     CREDITS:
     
@@ -24,10 +24,10 @@
 <title>{title} {block:TagPage}/ #{Tag}{/block:TagPage}{block:DayPage}/ @ {ShortMonth} {DayOfMonth}, {Year}{/block:DayPage} {block:PostSummary}/ {PostSummary}{/block:PostSummary}</title>
 {block:Description}<meta name="description" content="{MetaDescription}" />{/block:Description}
 
-<meta name="image:Background" content="https://64.media.tumblr.com/49f3e1aae7a9f4dae1123099d32bbb53/7a3ec3168d78f9af-1e/s2048x3072/29c02dff90799625bf94d32374e7d8c39f63887f.png"/>
-<meta name="image:Icon" content="https://64.media.tumblr.com/76a9a54444fd7d97977fec30927351c8/7a3ec3168d78f9af-bd/s2048x3072/6741aff43a9efd8a94add77d4535087cf51b2dc5.png"/>
+<meta name="image:Icon" content=""/>
+<meta name="image:Background" content=""/>
 
-<meta name="color:Background" content="#FFFFFF" />
+<meta name="color:Background" content="#FAFAFA" />
 <meta name="color:Posts" content="#FFFFFF" />
 <meta name="color:Text" content="#000000" />
 <meta name="color:Links" content="#7B7B7B" />
@@ -74,6 +74,7 @@
 
 <link href="https://fonts.googleapis.com/css?family={text:Google Font}:300,400,500,600,700|Karla:500|Playfair+Display" rel="stylesheet">
 <link href="https://static.tumblr.com/0podkko/oDSpg7y88/photosets.css" rel="stylesheet">
+<link href='https://static.tumblr.com/m2fiocp/1fbqq9vgi/outicons.css' rel='stylesheet' type='text/css'>
 <link href="https://cdn.jsdelivr.net/gh/emilymcaldwell/feathericons/style.css" rel='stylesheet' type='text/css'>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/smoothscroll/1.4.10/SmoothScroll.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
@@ -316,20 +317,6 @@ nav .drop_link {
 
 /* AUDIO */
 
-.spotify_audio_player {
-    height:80px;
-    width:100%!important;
-}
-
-.soundcloud_audio_player {
-    max-height:116px!important;
-}
-
-.bandcamp_audio_player {
-    height:120px!important;
-    width:100%!important;
-}
-
 .audio {
     display:flex;
     align-items:center;
@@ -345,7 +332,7 @@ nav .drop_link {
     height:90px;
     margin-right:20px;
     object-fit:cover;
-    border-radius:calc({select:border radius} - 1px);
+    border-radius:{select:border radius} 0 0 {select:border radius};
 }
 
 .art {
@@ -714,14 +701,8 @@ footer .feather {
         margin:75px auto;
     }
     
-    .audio-background, .video, .tmblr-full > video {
+    .video, .tmblr-full > video {
         width:90vw;
-    }
-    
-    .audio-info {
-        white-space:nowrap;
-        overflow:hidden;
-        text-overflow:ellipsis;
     }
 }
 
