@@ -4,7 +4,7 @@
 <!------------------------------------------------
  
     PANDORA BY 92PCY.TUMBLR.COM
-    LASTED UPDATED 21.08.22 v1.02
+    LASTED UPDATED 21.08.29 v1.02
  
     CREDITS:
     
@@ -14,7 +14,7 @@
     - no.js photosets by annasthms & eggdesign
     - smoothscroll by balazs galambosi
     - responsive iframes by nouvae
-    - npfPhotosets by codematurgy
+    - npf posts fix by glenthemes
  
 -------------------------------------------------->
 
@@ -135,6 +135,7 @@ body {
     font-family:'{text:google font}', sans-serif;
     font-size:{text:font size};
     word-break:break-word;
+    line-height:180%;
     background:{color:background};
     background-image:url({image:background});
     background-attachment:fixed;
@@ -188,7 +189,7 @@ p {
     margin-inline-start:0px;
     margin-inline-end:0px;
 }
-
+ 
 .drop_parent.active .drop_header {
     color:{color:accent};
 }
@@ -273,6 +274,7 @@ header div {
 
 .blogtitle {
     color:{color:text};
+    line-height:{text:font size};
     font-size:calc({text:font size} + 3px);
     font-weight:bold;
 }
@@ -285,7 +287,7 @@ header div {
     border:1px solid {color:borders};
     border-radius:{select:Border Radius};
     text-align:center;
-    padding:10px 20px;
+    padding:7px 20px;
 }
 
 .description a {
@@ -437,29 +439,17 @@ nav .drop_link {
 .quote {
     font-size:calc({text:font size} + 5px);
     font-weight:600;
-    line-height:100%;
+    line-height:140%;
 }
 
 .quote:before {
+    display:block;
     content:'\201C';
     color:{color:accent};
     font-family:'Playfair Display', serif;
-    font-size:30px;
+    font-size:40px;
     font-weight:normal;
     line-height:100%;
-    vertical-align:sub;
-    margin-right:5px;
-}
-
-.quote:after {
-    content:'\201D';
-    color:{color:accent};
-    font-family:'Playfair Display', serif;
-    font-size:30px;
-    font-weight:normal;
-    line-height:100%;
-    vertical-align:sub;
-    margin-left:5px;
 }
 
 .quote_container hr {
@@ -539,7 +529,7 @@ nav .drop_link {
     background:{color:posts};
     border:1px solid {color:borders};
     border-radius:{select:Border Radius};
-    padding:10px 20px;
+    padding:7px 20px;
     margin:10px 0;
 }
 
@@ -620,7 +610,7 @@ nav .drop_link {
 .likeb .liked + .actual-button {color:{color:accent};}
 
 .tags { display:block; text-align:center; line-height:200%; margin-top:10px; }
-.tags a { display:inline-block; margin:0 5px; }
+.tags a { display:inline; margin:0 5px; }
 
 /* NOTES */
 
@@ -634,7 +624,7 @@ nav .drop_link {
     margin:1px 0;
 }
 
-ol.notes { padding:0; display:block; margin-bottom:{text:margin}; }
+ol.notes { padding:0; display:block; margin-bottom:{text:margin}; margin-top:0; }
 .notes img, .notes-source img { display:inline-block; vertical-align:middle; width:20px; border-radius:50%; margin-right:10px; }
 li.note { display:block; margin:0; padding:10px 0; width:100%; }
 li.note blockquote { padding:0 0 0 10px; margin:5px 0 0 9px; }
@@ -767,7 +757,7 @@ footer .feather {
 {block:Title}
 <div class="title">{Title}</div>
 {/block:Title}
-<div class="commenter">
+<div class="commenter source-head">
 <img src="{PortraitURL-64}" />
 <span>
 {block:HasPermalink}<a href="{Permalink}">{/block:HasPermalink}{Username}{block:HasPermalink}</a>{/block:HasPermalink}
@@ -900,9 +890,9 @@ footer .feather {
 {block:Date}
 <div class="post_info drop_parent">
     {block:PinnedPostLabel}
-    <div class="date"><a href="{Permalink}" title="pinned post"><i class="feather feather-map-pin"></i></a></div>
+    <div class="date"><a href="{Permalink}" title="pinned post"><i class="feather feather-send"></i></a></div>
     {/block:PinnedPostLabel}
-    <div class="date"><a href="{Permalink}" title="{TimeAgo}"><i class="feather feather-clock"></i></a></div>
+    <div class="date"><a href="{Permalink}" title="{TimeAgo}"><i class="feather feather-info"></i></a></div>
     <div class="date"><a class="likeb" href="#" title="like">{LikeButton}<span class="actual-button"><i class="feather feather-heart"></i></span></a></div>
     <div class="date"><a href="{ReblogURL}" title="reblog"><i class="feather feather-repeat"></i></a></div>
     {block:hastags}
@@ -918,11 +908,11 @@ footer .feather {
 <div class="notes-info">
     <span><b>{TimeAgo} on {DayOfWeek}, {Month} {DayOfMonthWithZero}{DayOfMonthSuffix} {Year}</b></span>
     {block:NotReblog}
-    <span>original post by <a href="{ReblogParentURL}">{Name}</a></span>
+    <span>original post by <a href="{ReblogParentURL}">@{Name}</a></span>
     {/block:NotReblog}
     {block:RebloggedFrom}
-    <span>reblogged from <a href="{ReblogParentURL}">{ReblogParentName}</a></span>
-    <span>{block:ContentSource}originally posted by <a href="{ReblogRootURL}">{ReblogRootName}</a>{/block:ContentSource}</span>
+    <span>reblogged from <a href="{ReblogParentURL}">@{ReblogParentName}</a></span>
+    <span>{block:ContentSource}originally posted by <a href="{ReblogRootURL}">@{ReblogRootName}</a>{/block:ContentSource}</span>
     {/block:RebloggedFrom}
     <hr>
 </div> 
@@ -1045,13 +1035,18 @@ $(document).ready(function(){
 });
 </script>
 
-<script src="https://cdn.jsdelivr.net/gh/boscoxvi/npfphotosets/npfphotosets.js"></script><link href="https://cdn.jsdelivr.net/gh/boscoxvi/npfphotosets/npfphotosetstyle.css" rel="stylesheet" type="text/css">
-<script>
-npfPhotosets(".posts", {
-   includeCommonPhotosets: true,
-   photosetMargins:"3"
-});
-</script>
+<!--
+        NPF images fix v3.0 by @glenthemes [2021]
+        💌 git.io/JRBt7
+--->
+<script src="//npf-images-v3.github.io/script.js"></script>
+<link rel="stylesheet" href="//npf-images-v3.github.io/recon.css">
+<style tmblr-npf>
+:root {
+    --NPF-Caption-Spacing:10px;
+    --NPF-Image-Spacing:{text:photoset gutter};
+}
+</style>
 
 <a href="#" title="back to top" class="top"><i class="feather feather-arrow-up"></i></a>
 
