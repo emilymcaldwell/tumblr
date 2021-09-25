@@ -4,7 +4,7 @@
 <!------------------------------------------------
  
     DUALITY BY 92PCY.TUMBLR.COM
-    LASTED UPDATED 21.09.20 v1.0
+    LASTED UPDATED 21.09.25 v1.01
  
     CREDITS:
     
@@ -73,6 +73,19 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script src="https://static.tumblr.com/iuw14ew/VSQma1786/jquery.style-my-tooltips.js"></script>
 
+<!--
+        NPF images fix v3.0 by @glenthemes [2021]
+        💌 git.io/JRBt7
+--->
+<script src="//npf-images-v3.github.io/script.js"></script>
+<link rel="stylesheet" href="//npf-images-v3.github.io/recon.css">
+<style tmblr-npf>
+:root {
+    --NPF-Caption-Spacing:20px;
+    --NPF-Image-Spacing:{text:photoset gutter};
+}
+</style>
+
 <style type="text/css">
  
 /* SELECTION */
@@ -131,15 +144,15 @@ a {
     cursor:help;
     text-decoration:none;
     color:{color:links};
-    transition:all 0.3s ease-in-out;
+    transition:all 0.1s ease-in-out;
 }
 
 a:hover {
     color:{color:accent};
-    transition:all 0.3s ease-in-out;
+    transition:all 0.1s ease-in-out;
 }
 
-.post-info a, nav a, .comment_container a, .blog-title a {
+.post-info a, nav a, .comment-container a, .blog-title a {
     text-decoration:underline;
 }
 
@@ -258,7 +271,6 @@ nav span {
     width:100%;
     box-sizing:border-box;
     line-height:0%;
-    background:{color:accent};
     margin-bottom:25px;
 }
 
@@ -266,6 +278,7 @@ nav span {
     width:27px;
     transform:scale(1.2);
     margin-left:5px;
+    margin-bottom:-3px;
     line-height:0;
 }
 
@@ -274,7 +287,8 @@ nav span {
     align-items:center;
     justify-content:space-between;
     width:100%;
-    padding:20px;
+    height:70px;
+    padding:0 20px;
     box-sizing:border-box;
     color:{color:background};
     background:{color:text}66;
@@ -282,8 +296,8 @@ nav span {
     text-align:right;
 }
 
-.artist {
-    margin-top:22px;
+.track-info {
+    line-height:170%;
 }
 
 /* ASKS */
@@ -317,7 +331,7 @@ nav span {
     margin:0 10px 0 0;
 }
 
-.question_container, .answer_container {
+.question-container, .answer-container {
     margin:20px 0;
 }
 
@@ -329,7 +343,7 @@ nav span {
     
 }
 
-.quote_source {
+.quote-source {
     font-size:calc({text:font size} + 2px);
     font-weight:500;
     margin-bottom:5px;
@@ -370,7 +384,7 @@ nav span {
 
 /* CAPTIONS */
 
-.comment_container {
+.comment-container {
     margin-top:20px;
 }
 
@@ -404,32 +418,15 @@ nav span {
 }
 
 .date {
-    display:inline-block;
+    display:inline;
     margin-right:5px;
+    overflow-wrap:break-word;
 }
 
 .date:first-of-type {
     font-weight:bold;
 }
 
-.likeb {
-    position:relative;
-    display:inline-block;
-}
- 
-.likeb .like_button iframe {
-    position:absolute;
-    margin:0;
-    z-index:2;
-    opacity:0;
-}
-
-.like_button iframe {width:100%!important; height:100%!important;}
-.likeb .liked + .actual-button {color:{color:accent};}
-.likeb .liked + .actual-button:after {content: 'd';}
-
-.tags { display:inline; }
-.tag { display:inline; margin-right:5px; }
 /* NOTES */
 
 .notes-info { 
@@ -582,7 +579,7 @@ footer .feather {
 {block:Text}
 <div class="body">
 {block:NotReblog}
-<div class="comment_container">
+<div class="comment-container">
 {block:Title}
 <div class="title">{Title}</div>
 {/block:Title}
@@ -590,7 +587,7 @@ footer .feather {
 {/block:NotReblog}
 {block:RebloggedFrom}
 {block:Reblogs}
-<div class="comment_container">
+<div class="comment-container">
 {block:Title}
 <div class="title">{Title}</div>
 {/block:Title}
@@ -624,14 +621,14 @@ footer .feather {
 {/block:Video}
 
 {block:Quote}
-<div class="quote_container">
-{block:Source}<div class="quote_source">{Source} &horbar;</div>{/block:Source}
+<div class="quote-container">
+{block:Source}<div class="quote-source">{Source} &horbar;</div>{/block:Source}
 <div class="quote">{Quote}</div>
 </div>
 {/block:Quote}
 
 {block:Link}
-<div class="link_container">
+<div class="link-container">
 <div class="link"><a href="{URL}" class="path{block:Description} has-desc{/block:Description}" {Target}><span>{Name} {block:Excerpt}<div class="excerpt">{Excerpt}</div>{/block:Excerpt}</span><i class="feather feather-external-link"></i></a></div>
 {block:Description}
 <div class="link-description">
@@ -650,10 +647,10 @@ footer .feather {
 {/block:Chat}
 
 {block:Audio}
-<div class="audio-wrap" style="background:url({block:AlbumArt}{AlbumArtURL}{/block:AlbumArt});background-position-y:center;background-size:100%;">
+<div class="audio-wrap" style="background-color:{color:text};background-image:url({block:AlbumArt}{AlbumArtURL}{/block:AlbumArt});background-position-y:center;background-size:100%;">
     <div class="audio-info">
         <div class="audio-player">{block:AudioPlayer}{AudioPlayer}{/block:AudioPlayer}</div>
-        <span>
+        <span class="track-info">
             <div class="track">{block:TrackName}<strong>{TrackName}</strong>{/block:TrackName}</div>
             <div class="artist">{block:Artist}{Artist}{/block:Artist}</div>
         </span>
@@ -662,7 +659,7 @@ footer .feather {
 {/block:Audio}
 
 {block:Answer}
-<div class="question_container">
+<div class="question-container">
 <div class="question_text"><p>{Question}</p></div>
 <div class="asker">
 <img src="{AskerPortraitURL-48}"/>
@@ -670,7 +667,7 @@ footer .feather {
 </div>
 </div>
 {block:Answerer}
-<div class="answer_container">
+<div class="answer-container">
 <div class="answerer">
 <img src="{AnswererPortraitURL-48}"/>
 {Answerer}
@@ -678,7 +675,7 @@ footer .feather {
 <div class="answer_text">{Answer}</div>
 </div>
 {block:Reblogs}
-<div class="reply_container">
+<div class="reply-container">
 <div class="replier">
 <img src="{PortraitURL-64}" />
 {block:HasPermalink}<a href="{Permalink}">{/block:HasPermalink}{Username}{block:HasPermalink}</a>{/block:HasPermalink}
@@ -688,7 +685,7 @@ footer .feather {
 {/block:Reblogs}
 {/block:Answerer}
 {block:NotReblog}
-<div class="answer_container">
+<div class="answer-container">
 <div class="answer_text">{Answer}</div>
 </div>
 {/block:NotReblog}
@@ -697,13 +694,13 @@ footer .feather {
 {block:Caption}
 <div class="caption">
 {block:NotReblog}
-<div class="comment_container">
+<div class="comment-container">
 <div class="comment">{Caption}</div>
 </div>
 {/block:NotReblog}
 {block:RebloggedFrom}
 {block:Reblogs}
-<div class="comment_container">
+<div class="comment-container">
 <div class="commenter">
 <img src="{PortraitURL-64}" />
 <span>
@@ -721,7 +718,7 @@ footer .feather {
 <div class="post-info">
     <div class="date"><a href="{Permalink}" class="notecount">{NoteCount}</a></div>
     {block:hastags}
-    <div class="tags">{block:Tags}<div class="tag"><a href="{TagUrl}">{Tag}</a></div>{/block:Tags}</div>
+    {block:Tags}<div class="date"><a href="{TagUrl}">{Tag}</a></div>{/block:Tags}
     {/block:hasTags}
 </div>
 {/block:Date}
@@ -827,25 +824,6 @@ function lightbox(elem) {
 </script>
 
 <script>
-    function dropHeader_onclick (elem)
-    {
-        let parent = elem.closest(".drop_parent");
-        if (parent) {
-            let active = parent.classList.toggle('active');
-            let acc = parent.getElementsByClassName('drop_link')[0];
-            if (acc) {
-                if (active) {
-                    acc.style.maxHeight = acc.scrollHeight + 'px';
-                }
-                else {
-                    acc.style.maxHeight = '0px';
-                }
-            }
-        }
-    }
-</script>
-
-<script>
 $(document).ready(function() {
   var $audio = $('iframe.tumblr_audio_player');
   $audio.load(function() {
@@ -877,19 +855,6 @@ $(document).ready(function(){
    
 });
 </script>
-
-<!--
-        NPF images fix v3.0 by @glenthemes [2021]
-        💌 git.io/JRBt7
---->
-<script src="//npf-images-v3.github.io/script.js"></script>
-<link rel="stylesheet" href="//npf-images-v3.github.io/recon.css">
-<style tmblr-npf>
-:root {
-    --NPF-Caption-Spacing:20px;
-    --NPF-Image-Spacing:{text:photoset gutter};
-}
-</style>
 
 <a href="#" title="back to top" class="top"><i class="feather feather-arrow-up"></i></a>
 
